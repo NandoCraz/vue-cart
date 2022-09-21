@@ -31,7 +31,7 @@
                                     <th scope="col">Harga</th>
                                     <th scope="col">Kuantitas</th>
                                     <th scope="col">Subtotal</th>
-                                    <th scope="col">Aksi</th>
+                                    <th scope="col" class="text-center" colspan="2">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody v-if="carts.length !== 0">
@@ -43,6 +43,14 @@
                                     <td>{{ cart.harga }}</td>
                                     <td>{{ cart.qty }}</td>
                                     <td>{{ cart.subTotal }}</td>
+                                    <td>
+                                        <a
+                                            href="#"
+                                            class="btn btn-sm btn-danger"
+                                            @click="kurangiCarts(cart.idProduk)"
+                                            >Kurangi</a
+                                        >
+                                    </td>
                                     <td>
                                         <a
                                             href="#"
@@ -120,6 +128,18 @@ export default {
             this.carts.forEach((cart) => {
                 if (cart.idProduk == id) {
                     this.carts.splice(this.carts.indexOf(cart), 1);
+                }
+            });
+        },
+        kurangiCarts(id) {
+            this.carts.forEach((cart) => {
+                if (cart.idProduk == id) {
+                    if (cart.qty === 0) {
+                        this.carts.splice(this.carts.indexOf(cart), 1);
+                    } else {
+                        cart.qty -= 1;
+                        cart.subTotal = cart.qty * cart.harga;
+                    }
                 }
             });
         },

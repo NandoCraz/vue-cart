@@ -5566,6 +5566,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["carts"],
   data: function data() {
@@ -5593,6 +5601,20 @@ __webpack_require__.r(__webpack_exports__);
       this.carts.forEach(function (cart) {
         if (cart.idProduk == id) {
           _this2.carts.splice(_this2.carts.indexOf(cart), 1);
+        }
+      });
+    },
+    kurangiCarts: function kurangiCarts(id) {
+      var _this3 = this;
+
+      this.carts.forEach(function (cart) {
+        if (cart.idProduk == id) {
+          if (cart.qty === 0) {
+            _this3.carts.splice(_this3.carts.indexOf(cart), 1);
+          } else {
+            cart.qty -= 1;
+            cart.subTotal = cart.qty * cart.harga;
+          }
         }
       });
     },
@@ -28872,6 +28894,22 @@ var render = function () {
                             _c(
                               "a",
                               {
+                                staticClass: "btn btn-sm btn-danger",
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.kurangiCarts(cart.idProduk)
+                                  },
+                                },
+                              },
+                              [_vm._v("Kurangi")]
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c(
+                              "a",
+                              {
                                 staticClass: "btn btn-sm btn-secondary",
                                 attrs: { href: "#" },
                                 on: {
@@ -28983,7 +29021,11 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Subtotal")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Aksi")]),
+        _c(
+          "th",
+          { staticClass: "text-center", attrs: { scope: "col", colspan: "2" } },
+          [_vm._v("Aksi")]
+        ),
       ]),
     ])
   },
