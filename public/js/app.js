@@ -28932,7 +28932,7 @@ var render = function () {
                     _c("th", { attrs: { colspan: "4" } }, [_vm._v("Total")]),
                     _vm._v(" "),
                     _c("th", { attrs: { colspan: "2" } }, [
-                      _vm._v(_vm._s(_vm.total)),
+                      _vm._v("Rp. " + _vm._s(_vm.total)),
                     ]),
                   ]),
                 ]),

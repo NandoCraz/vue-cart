@@ -71,7 +71,7 @@
                             <tfoot>
                                 <tr>
                                     <th colspan="4">Total</th>
-                                    <th colspan="2">{{ total }}</th>
+                                    <th colspan="2">Rp. {{ total }}</th>
                                 </tr>
                             </tfoot>
                         </table>
