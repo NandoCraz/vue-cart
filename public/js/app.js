@@ -29025,7 +29025,7 @@ var render = function () {
     [
       _c("div", { staticClass: "container-fluid" }, [
         _c("a", { staticClass: "navbar-brand fw-bold", attrs: { href: "" } }, [
-          _vm._v("ZachStore"),
+          _vm._v("NandoStore"),
         ]),
         _vm._v(" "),
         _vm._m(0),
