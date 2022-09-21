@@ -5599,8 +5599,11 @@ __webpack_require__.r(__webpack_exports__);
     checkout: function checkout() {
       var konfirmasi = confirm("Yakin Ingin Checkout?");
 
-      if (konfirmasi) {
+      if (konfirmasi && this.carts.length !== 0) {
+        alert("Terima Kasih Sudah Berbelanja :)");
         location.reload();
+      } else {
+        alert("Isi keranjang terlebih dahulu!");
       }
     }
   }
