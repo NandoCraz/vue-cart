@@ -139,6 +139,7 @@ export default {
                     } else {
                         cart.qty -= 1;
                         cart.subTotal = cart.qty * cart.harga;
+                        this.$emit("tambah-stock", id);
                     }
                 }
             });

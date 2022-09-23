@@ -5393,6 +5393,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5450,6 +5453,12 @@ __webpack_require__.r(__webpack_exports__);
         cart.qty++;
         cart.subTotal = cart.qty * cart.harga;
       }
+    },
+    tambahStock: function tambahStock(id) {
+      var produk = this.items.find(function (item) {
+        return item.id == id;
+      });
+      produk.stock++;
     }
   }
 });
@@ -5614,6 +5623,8 @@ __webpack_require__.r(__webpack_exports__);
           } else {
             cart.qty -= 1;
             cart.subTotal = cart.qty * cart.harga;
+
+            _this3.$emit("tambah-stock", id);
           }
         }
       });
@@ -28818,7 +28829,10 @@ var render = function () {
         on: { "add-to-cart": _vm.addToCart },
       }),
       _vm._v(" "),
-      _c("modal-component", { attrs: { carts: _vm.carts } }),
+      _c("modal-component", {
+        attrs: { carts: _vm.carts },
+        on: { "tambah-stock": _vm.tambahStock },
+      }),
     ],
     1
   )

@@ -7,7 +7,10 @@
         ></items-component>
 
         <!-- Modal -->
-        <modal-component :carts="carts"></modal-component>
+        <modal-component
+            @tambah-stock="tambahStock"
+            :carts="carts"
+        ></modal-component>
     </div>
 </template>
 
@@ -70,6 +73,10 @@ export default {
                 cart.qty++;
                 cart.subTotal = cart.qty * cart.harga;
             }
+        },
+        tambahStock(id) {
+            let produk = this.items.find((item) => item.id == id);
+            produk.stock++;
         },
     },
 };
