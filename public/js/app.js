@@ -5396,6 +5396,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5423,6 +5424,19 @@ __webpack_require__.r(__webpack_exports__);
         name: "Gitar Folk",
         price: 900000,
         pict: "gitarFolk.jpg",
+        stock: 4
+      }],
+      itemStock: [{
+        id: 1,
+        stock: 12
+      }, {
+        id: 2,
+        stock: 8
+      }, {
+        id: 3,
+        stock: 5
+      }, {
+        id: 4,
         stock: 4
       }],
       carts: []
@@ -5459,6 +5473,15 @@ __webpack_require__.r(__webpack_exports__);
         return item.id == id;
       });
       produk.stock++;
+    },
+    awalStock: function awalStock(id) {
+      var produk = this.items.find(function (item) {
+        return item.id == id;
+      });
+      var awal = this.itemStock.find(function (item) {
+        return item.id == id;
+      });
+      produk.stock = awal.stock;
     }
   }
 });
@@ -5476,6 +5499,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5610,6 +5639,8 @@ __webpack_require__.r(__webpack_exports__);
       this.carts.forEach(function (cart) {
         if (cart.idProduk == id) {
           _this2.carts.splice(_this2.carts.indexOf(cart), 1);
+
+          _this2.$emit("reset-stock", id);
         }
       });
     },
@@ -28831,7 +28862,7 @@ var render = function () {
       _vm._v(" "),
       _c("modal-component", {
         attrs: { carts: _vm.carts },
-        on: { "tambah-stock": _vm.tambahStock },
+        on: { "tambah-stock": _vm.tambahStock, "reset-stock": _vm.awalStock },
       }),
     ],
     1
@@ -29038,7 +29069,11 @@ var staticRenderFns = [
         _c(
           "th",
           { staticClass: "text-center", attrs: { scope: "col", colspan: "2" } },
-          [_vm._v("Aksi")]
+          [
+            _vm._v(
+              "\n                                    Aksi\n                                "
+            ),
+          ]
         ),
       ]),
     ])

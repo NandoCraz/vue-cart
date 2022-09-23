@@ -9,6 +9,7 @@
         <!-- Modal -->
         <modal-component
             @tambah-stock="tambahStock"
+            @reset-stock="awalStock"
             :carts="carts"
         ></modal-component>
     </div>
@@ -49,6 +50,24 @@ export default {
                     stock: 4,
                 },
             ],
+            itemStock: [
+                {
+                    id: 1,
+                    stock: 12,
+                },
+                {
+                    id: 2,
+                    stock: 8,
+                },
+                {
+                    id: 3,
+                    stock: 5,
+                },
+                {
+                    id: 4,
+                    stock: 4,
+                },
+            ],
             carts: [],
         };
     },
@@ -77,6 +96,12 @@ export default {
         tambahStock(id) {
             let produk = this.items.find((item) => item.id == id);
             produk.stock++;
+        },
+
+        awalStock(id) {
+            let produk = this.items.find((item) => item.id == id);
+            let awal = this.itemStock.find((item) => item.id == id);
+            produk.stock = awal.stock;
         },
     },
 };

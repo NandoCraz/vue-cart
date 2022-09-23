@@ -31,7 +31,13 @@
                                     <th scope="col">Harga</th>
                                     <th scope="col">Kuantitas</th>
                                     <th scope="col">Subtotal</th>
-                                    <th scope="col" class="text-center" colspan="2">Aksi</th>
+                                    <th
+                                        scope="col"
+                                        class="text-center"
+                                        colspan="2"
+                                    >
+                                        Aksi
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody v-if="carts.length !== 0">
@@ -128,6 +134,7 @@ export default {
             this.carts.forEach((cart) => {
                 if (cart.idProduk == id) {
                     this.carts.splice(this.carts.indexOf(cart), 1);
+                    this.$emit("reset-stock", id);
                 }
             });
         },
